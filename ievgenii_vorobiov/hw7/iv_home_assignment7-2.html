@@ -1,0 +1,31 @@
+<!-- ------------------------
+Задача 7.2
+------------------------
+Дано:
+HTML страница в которой есть только такой код -->
+
+<div id="test" style="height: 50px;background-color: lightblue;">Test Div</div>
+<p>Расчетные стили для test div: <br><span id="output"></span></p>
+
+<script>
+	function myFunction() {
+		var elem = document.getElementById("test");
+		var txt;
+		cssObj = window.getComputedStyle(elem)
+
+		for (i = 0; i < cssObj.length; i++) {
+			cssObjProp = cssObj.item(i)
+			txt += cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
+		}
+		document.getElementById("output").innerHTML = txt;
+		
+		var divBackgroundColor = getComputedStyle(document.getElementById('test')).background.slice(0, 18);
+		document.getElementById("output").innerHTML = divBackgroundColor;
+		// document.getElementsByTagName('p')[0].innerText.slice(0, 35).concat(divBackgroundColor);
+	}
+	myFunction()
+</script>
+
+
+<!-- Вопрос:
+Как получить расчетный стиль для фонового цвета у дива с id="test"? -->
